@@ -1,0 +1,9 @@
+services:
+  postgres-database:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: floods #todo: change
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+    ports:
+      - "5432:5432"
