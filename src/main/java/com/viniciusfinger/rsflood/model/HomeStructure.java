@@ -1,6 +1,7 @@
 package com.viniciusfinger.rsflood.model;
 
-import com.viniciusfinger.rsflood.enums.HouseMaterial;
+import com.viniciusfinger.rsflood.enums.FloorMaterial;
+import com.viniciusfinger.rsflood.enums.HomeMaterial;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -15,7 +16,19 @@ public class HomeStructure {
     private Long id;
 
     @Enumerated(EnumType.STRING)
-    private HouseMaterial material;
+    private HomeMaterial material;
+
+    @Enumerated(EnumType.STRING)
+    private FloorMaterial floorMaterial;
+
+    //Caixa d'água
+    private Boolean hasWaterTank;
+
+    //Água encanada
+    private Boolean hasWaterPipe;
+
+    //Fossa séptica
+    private Boolean hasSepticTank;
 
     private Integer roomsNumber;
 

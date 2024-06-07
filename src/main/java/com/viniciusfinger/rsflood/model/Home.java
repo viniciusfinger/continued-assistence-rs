@@ -1,5 +1,6 @@
 package com.viniciusfinger.rsflood.model;
 
+import com.viniciusfinger.rsflood.enums.HomeZone;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -21,11 +22,16 @@ public class Home {
 
     private String complement;
 
+    private String cep;
+
     private String neighbourhood;
 
     private String city;
 
-    private String cep;
+    private Boolean isRented;
+
+    @Enumerated(EnumType.STRING)
+    private HomeZone zone;
 
     @OneToOne
     private HomeStructure homeStructure;
