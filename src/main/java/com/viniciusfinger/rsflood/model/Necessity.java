@@ -23,4 +23,5 @@ public class Necessity {
 
     @ManyToOne
     private Home home;
+
 }
