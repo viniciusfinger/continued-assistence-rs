@@ -42,4 +42,5 @@ public class Home {
     @OneToMany
     private List<Person> persons;
 
+    private Double averageFamilyIncome;
 }
