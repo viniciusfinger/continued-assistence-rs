@@ -3,6 +3,7 @@
 In May 2024, the state of Rio Grande do Sul suffered the worst tragedy in its 287-year history. The numbers indicate that 572 thousand people had to leave their homes and at least 30 thousand remain homeless. Entire cities have been devastated and need supplies to rebuild themselves in a dignified way.
 
 Therefore, it was designed together with volunteers to create an information system that allows the registration of people and homes to set up a continuous supply chain, driven by volunteers and companies, as the municipal, state and federal government has been acting with disregard.
+
 ![image](flood.jpeg)
 
 ## Using techonolgy to help
