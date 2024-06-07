@@ -8,7 +8,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class HouseStructure {
+public class HomeStructure {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

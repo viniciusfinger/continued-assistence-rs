@@ -10,7 +10,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class House {
+public class Home {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -28,10 +28,12 @@ public class House {
     private String cep;
 
     @OneToOne
-    private HouseStructure houseStructure;
+    private HomeStructure homeStructure;
 
-    @OneToMany(mappedBy = "house")
+    @OneToMany(mappedBy = "home")
     private List<Necessity> necessities;
 
+    @OneToMany
+    private List<Person> persons;
 
 }

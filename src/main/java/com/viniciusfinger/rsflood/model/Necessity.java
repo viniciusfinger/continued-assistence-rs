@@ -22,5 +22,5 @@ public class Necessity {
     private NecessityCategory category;
 
     @ManyToOne
-    private House house;
+    private Home home;
 }
