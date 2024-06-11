@@ -44,6 +44,8 @@ public class AddressController {
     public String submitAddressForm(Address address, Model model) {
         model.addAttribute("address", address);
         log.info("Address saved: {}", address);
-        return "address";
+
+        model.addAttribute("addresses", List.of(address));
+        return "address-list";
     }
 }
