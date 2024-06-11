@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Moradias 🏡</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-5">
+    <h2>Cadastro de Moradias 🏡</h2>
+    <form th:object="${address}" th:action="@{/address/new}" method="post">
+        <div class="form-group">
+            <label for="street">Rua:</label>
+            <input type="text" class="form-control" id="street" th:field="*{street}"/>
+        </div>
+        <div class="form-group">
+            <label for="number">Número:</label>
+            <input type="text" class="form-control" id="number" th:field="*{number}"/>
+        </div>
+        <div class="form-group">
+            <label for="cep">CEP:</label>
+            <input type="text" class="form-control" id="cep" th:field="*{cep}"/>
+        </div>
+        <div class="form-group">
+            <label for="neighbourhood">Bairro:</label>
+            <input type="text" class="form-control" id="neighbourhood" th:field="*{neighbourhood}"/>
+        </div>
+        <div class="form-group">
+            <label for="city">Cidade:</label>
+            <input type="text" class="form-control" id="city" th:field="*{city}"/>
+        </div>
+        <div class="form-group">
+            <label for="zone">Zona:</label>
+            <select class="form-control" id="zone" th:field="*{zone}">
+                <option th:each="zone : ${T(com.viniciusfinger.rsflood.enums.HomeZone).values()}" th:value="${zone}"
+                        th:text="${zone.getDescription()}"></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="observation">Observação:</label>
+            <input type="text" class="form-control" id="observation" th:field="*{observation}"/>
+        </div>
+        <div class="form-group">
+            <label for="homes">Moradias nesse endereço:</label>
+            <select class="form-control" id="homes" th:field="*{homes}" multiple="multiple">
+                <option th:each="home : ${homesList}" th:value="${home}" th:text="${home.name}"></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Salvar</button>
+            <a href="/address" class="btn btn-secondary ml-2">Cancelar</a>
+        </div>
+    </form>
+</div>
+<div class="b-2"></div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

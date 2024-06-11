@@ -16,22 +16,13 @@ public class Home {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String street;
+    @ManyToOne
+    private Address address;
 
-    private String number;
-
+    // Apartment number, home number in yard...
     private String complement;
 
-    private String cep;
-
-    private String neighbourhood;
-
-    private String city;
-
     private Boolean isRented;
-
-    @Enumerated(EnumType.STRING)
-    private HomeZone zone;
 
     @OneToOne
     private HomeStructure homeStructure;
