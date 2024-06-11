@@ -1,6 +1,5 @@
 package com.viniciusfinger.rsflood.model;
 
-import com.viniciusfinger.rsflood.enums.HomeZone;
 import jakarta.persistence.*;
 
 import java.util.List;
