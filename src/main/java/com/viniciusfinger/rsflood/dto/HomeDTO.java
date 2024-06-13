@@ -1,24 +1,22 @@
-package com.viniciusfinger.rsflood.model;
+package com.viniciusfinger.rsflood.dto;
 
 import com.viniciusfinger.rsflood.enums.FloorMaterial;
 import com.viniciusfinger.rsflood.enums.HomeMaterial;
-import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-@Entity
 @Getter
 @Setter
-public class HomeStructure {
+public class HomeDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private String complement;
 
-    @Enumerated(EnumType.STRING)
+    private Boolean isRented;
+
+    private Double averageFamilyIncome;
+
     private HomeMaterial material;
 
-    @Enumerated(EnumType.STRING)
     private FloorMaterial floorMaterial;
 
     //Caixa d'água

@@ -8,7 +8,7 @@
 <body>
 <div class="container mt-5">
     <h2>Cadastro de Moradias 🏡</h2>
-    <form th:object="${address}" th:action="@{/address/new}" method="post">
+    <form id="address-form" th:object="${address}" th:action="@{/address}" method="post">
         <div class="form-group">
             <label for="street">Rua:</label>
             <input type="text" class="form-control" id="street" th:field="*{street}"/>
@@ -41,10 +41,17 @@
             <input type="text" class="form-control" id="observation" th:field="*{observation}"/>
         </div>
         <div class="form-group">
-            <label for="homes">Moradias nesse endereço:</label>
-            <select class="form-control" id="homes" th:field="*{homes}" multiple="multiple">
-                <option th:each="home : ${homesList}" th:value="${home}" th:text="${home.name}"></option>
-            </select>
+            <label>Residências:</label>
+            <ul class="list-group">
+                <li class="list-group-item d-flex justify-content-between align-items-center"
+                    th:each="home, iterStat : ${address.homes}">
+                    <span th:text="${home.description}">Descrição da residência</span>
+                    <button type="button" class="btn btn-danger btn-sm"
+                            th:onclick="'removeHome(' + ${iterStat.index} + ')'">Remover
+                    </button>
+                </li>
+            </ul>
+            <a href="/home/new" id="create-home" class="btn btn-primary mt-2">Adicionar</a>
         </div>
         <div class="form-group">
             <button type="submit" class="btn btn-primary">Salvar</button>
@@ -56,5 +63,14 @@
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    document.getElementById("create-home").addEventListener("click", function () {
+        document.getElementById("address-form").submit();
+
+        var formulario = document.getElementById("address-form");
+        console.log(formulario);
+        console.log("Botão 'create-home' clicado!");
+    });
+</script>
 </body>
 </html>

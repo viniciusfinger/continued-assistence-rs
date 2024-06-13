@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Adicionar Moradia ao Endereço</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-3 mb-3">
+    <h2>Adicionar Moradia ao Endereço</h2>
+    <form th:action="@{/home}" th:object="${homeDTO}" method="post" class="needs-validation" novalidate>
+        <div class="form-group">
+            <label for="complement">Complemento</label>
+            <input type="text" th:field="*{complement}" class="form-control" id="complement" required>
+        </div>
+        <div class="form-group">
+            <label for="isRented">Alugada?</label>
+            <select th:field="*{isRented}" class="form-control" id="isRented" required>
+                <option th:value="true">Sim</option>
+                <option th:value="false">Não</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="averageFamilyIncome">Renda Familiar Média</label>
+            <input type="number" th:field="*{averageFamilyIncome}" class="form-control" id="averageFamilyIncome" step="0.01" required>
+        </div>
+        <div class="form-group">
+            <label for="material">Material da Casa</label>
+            <select th:field="*{material}" class="form-control" id="material" required>
+                <option th:value="WOOD">Madeira</option>
+                <option th:value="BRICK">Tijolo</option>
+                <option th:value="CONCRETE">Concreto</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="floorMaterial">Material do Piso</label>
+            <select th:field="*{floorMaterial}" class="form-control" id="floorMaterial" required>
+                <option th:value="TILE">Azulejo</option>
+                <option th:value="WOOD">Madeira</option>
+                <option th:value="CARPET">Carpete</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="hasWaterTank">Tem Caixa d'água?</label>
+            <select th:field="*{hasWaterTank}" class="form-control" id="hasWaterTank" required>
+                <option th:value="true">Sim</option>
+                <option th:value="false">Não</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="hasWaterPipe">Tem Água Encanada?</label>
+            <select th:field="*{hasWaterPipe}" class="form-control" id="hasWaterPipe" required>
+                <option th:value="true">Sim</option>
+                <option th:value="false">Não</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="hasSepticTank">Tem Fossa Séptica?</label>
+            <select th:field="*{hasSepticTank}" class="form-control" id="hasSepticTank" required>
+                <option th:value="true">Sim</option>
+                <option th:value="false">Não</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="roomsNumber">Número de Quartos</label>
+            <input type="number" th:field="*{roomsNumber}" class="form-control" id="roomsNumber" required>
+        </div>
+        <div class="form-group">
+            <label for="bathroomsNumber">Número de Banheiros</label>
+            <input type="number" th:field="*{bathroomsNumber}" class="form-control" id="bathroomsNumber" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Salvar</button>
+    </form>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

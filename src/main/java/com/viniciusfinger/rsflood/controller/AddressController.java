@@ -18,7 +18,7 @@ import java.util.List;
 public class AddressController {
 
     @GetMapping
-    public String openListAddress(Model model) {
+    public String openAddressList(Model model) {
         Address address = new Address();
         address.setId(1L);
         address.setStreet("Rua Alberto Bins");
