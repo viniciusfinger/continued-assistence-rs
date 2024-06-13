@@ -2,16 +2,29 @@ package com.viniciusfinger.rsflood.dto;
 
 import com.viniciusfinger.rsflood.enums.FloorMaterial;
 import com.viniciusfinger.rsflood.enums.HomeMaterial;
-import lombok.Getter;
-import lombok.Setter;
+import com.viniciusfinger.rsflood.model.Address;
+import com.viniciusfinger.rsflood.model.HomeStructure;
+import lombok.Data;
 
-@Getter
-@Setter
+import java.util.List;
+
+@Data
 public class HomeDTO {
 
+    private Long id;
+
+    private Address address;
+
+    // Apartment number, home number in yard...
     private String complement;
 
     private Boolean isRented;
+
+    private HomeStructure homeStructure;
+
+    private List<NecessityDTO> necessities;
+
+    private List<PersonDTO> persons;
 
     private Double averageFamilyIncome;
 
