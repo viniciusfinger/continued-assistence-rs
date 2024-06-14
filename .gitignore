@@ -90,6 +90,7 @@ nb-configuration.xml
 *.log
 
 ##############################
-## React
+## Front-end
 ##############################
 frontend/node_modules/
+frontend/.angular/
