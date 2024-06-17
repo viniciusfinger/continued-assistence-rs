@@ -2,7 +2,7 @@ import { HomeZone } from "../enum/home-zone";
 import { HomeDTO } from "./home-dto";
 
 export class AddressDTO {
-    id: number;
+    id: number | null;
     street: string;
     number: string;
     cep: string;
@@ -13,7 +13,7 @@ export class AddressDTO {
     homes: HomeDTO[];
 
     constructor(
-        id: number,
+        id: number | null,
         street: string,
         number: string,
         cep: string,

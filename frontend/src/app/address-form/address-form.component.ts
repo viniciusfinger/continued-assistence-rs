@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AddressDTO } from '../model/dto/address-dto';
+import { HomeZone } from '../model/enum/home-zone';
 
 @Component({
   selector: 'app-address-form',
@@ -23,10 +25,25 @@ export class AddressFormComponent {
 
   submit() {
     if (this.addressForm.valid) {
-      console.log('Form submitted');
-      console.log('Form Values:', this.addressForm.value);
+      const formValues = this.addressForm.value;
+      let address = this.createAddressDTO(formValues);
+      console.log(address);
     } else {
       console.log('Form is invalid');
     }
+  }
+
+  private createAddressDTO(formValues: any): AddressDTO {
+    return new AddressDTO(
+      null,
+      formValues.street,
+      formValues.number,
+      formValues.cep,
+      formValues.neighbourhood,
+      formValues.city,
+      formValues.zone as HomeZone,
+      formValues.observation,
+      []
+    );
   }
 }
