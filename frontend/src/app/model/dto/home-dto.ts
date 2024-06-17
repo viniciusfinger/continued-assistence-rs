@@ -4,7 +4,7 @@ import { NecessityDTO } from "./necessity-dto";
 import { PersonDTO } from "./person-dto";
 
 export class HomeDTO {
-    id: number;
+    id: number | null;
     complement: string;
     isRented: boolean;
     necessities: NecessityDTO[];
@@ -19,7 +19,7 @@ export class HomeDTO {
     bathroomsNumber: number;
 
     constructor(
-        id: number,
+        id: number | null,
         complement: string,
         isRented: boolean,
         necessities: NecessityDTO[],
