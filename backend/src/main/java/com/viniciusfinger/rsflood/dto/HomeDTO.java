@@ -20,8 +20,6 @@ public class HomeDTO {
 
     private Boolean isRented;
 
-    private HomeStructure homeStructure;
-
     private List<NecessityDTO> necessities;
 
     private List<PersonDTO> persons;
