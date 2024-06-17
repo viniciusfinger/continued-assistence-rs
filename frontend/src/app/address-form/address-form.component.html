@@ -1,42 +1,62 @@
 <div class="container mt-5">
-    <div class="row justify-content-center">
-      <div class="col-12 col-md-8 col-lg-6">
-        <h2>Cadastro de Residências 🏡</h2>
-        <form (ngSubmit)="submit()">
-          <div class="form-group">
-            <label for="street">Rua</label>
-            <input type="text" class="form-control" id="street" placeholder="Digite a rua" [(ngModel)]="street" name="street">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6">
+      <h2>Cadastro de Residências 🏡</h2>
+      <form [formGroup]="addressForm" (ngSubmit)="submit()">
+        <div class="form-group">
+          <label for="street">Rua</label>
+          <input type="text" class="form-control" id="street" placeholder="Digite a rua" formControlName="street">
+          <div *ngIf="addressForm.get('street')?.invalid && addressForm.get('street')?.touched" class="text-danger">
+            Rua é obrigatória.
           </div>
-          <div class="form-group">
-            <label for="number">Número</label>
-            <input type="text" class="form-control" id="number" placeholder="Digite o número" [(ngModel)]="number" name="number">
+        </div>
+        <div class="form-group">
+          <label for="number">Número</label>
+          <input type="text" class="form-control" id="number" placeholder="Digite o número" formControlName="number">
+          <div *ngIf="addressForm.get('number')?.invalid && addressForm.get('number')?.touched" class="text-danger">
+            Número é obrigatório.
           </div>
-          <div class="form-group">
-            <label for="cep">CEP</label>
-            <input type="text" class="form-control" id="cep" placeholder="Digite o CEP" [(ngModel)]="cep" name="cep">
+        </div>
+        <div class="form-group">
+          <label for="cep">CEP</label>
+          <input type="text" class="form-control" id="cep" placeholder="Digite o CEP" formControlName="cep">
+          <div *ngIf="addressForm.get('cep')?.invalid && addressForm.get('cep')?.touched" class="text-danger">
+            CEP é obrigatório.
           </div>
-          <div class="form-group">
-            <label for="neighbourhood">Bairro</label>
-            <input type="text" class="form-control" id="neighbourhood" placeholder="Digite o bairro" [(ngModel)]="neighbourhood" name="neighbourhood">
+        </div>
+        <div class="form-group">
+          <label for="neighbourhood">Bairro</label>
+          <input type="text" class="form-control" id="neighbourhood" placeholder="Digite o bairro"
+            formControlName="neighbourhood">
+          <div *ngIf="addressForm.get('neighbourhood')?.invalid && addressForm.get('neighbourhood')?.touched"
+            class="text-danger">
+            Bairro é obrigatório.
           </div>
-          <div class="form-group">
-            <label for="city">Cidade</label>
-            <input type="text" class="form-control" id="city" placeholder="Digite a cidade" [(ngModel)]="city" name="city">
+        </div>
+        <div class="form-group">
+          <label for="city">Cidade</label>
+          <input type="text" class="form-control" id="city" placeholder="Digite a cidade" formControlName="city">
+          <div *ngIf="addressForm.get('city')?.invalid && addressForm.get('city')?.touched" class="text-danger">
+            Cidade é obrigatória.
           </div>
-          <div class="form-group">
-            <label for="zone">Zona</label>
-            <select class="form-control" id="zone" [(ngModel)]="zone" name="zone">
-              <option value="rural">Rural</option>
-              <option value="urbano">Urbano</option>
-            </select>
+        </div>
+        <div class="form-group">
+          <label for="zone">Zona</label>
+          <select class="form-control" id="zone" formControlName="zone">
+            <option value="rural">Rural</option>
+            <option value="urbano">Urbano</option>
+          </select>
+          <div *ngIf="addressForm.get('zone')?.invalid && addressForm.get('zone')?.touched" class="text-danger">
+            Zona é obrigatória.
           </div>
-          <div class="form-group">
-            <label for="observation">Observação</label>
-            <textarea class="form-control" id="observation" rows="3" placeholder="Digite uma observação" [(ngModel)]="observation" name="observation"></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary mt-2">Salvar</button>
-        </form>
-      </div>
+        </div>
+        <div class="form-group">
+          <label for="observation">Observação</label>
+          <textarea class="form-control" id="observation" rows="3" placeholder="Digite uma observação"
+            formControlName="observation"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary mt-2">Salvar</button>
+      </form>
     </div>
   </div>
-  
+</div>
