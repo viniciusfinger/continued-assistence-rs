@@ -9,6 +9,7 @@ import { HomeZone } from '../model/enum/home-zone';
   styleUrls: ['./address-form.component.css']
 })
 export class AddressFormComponent {
+  homeZones: { value: string, label: string }[] = [];
   addressForm: FormGroup;
 
   constructor(private fb: FormBuilder) {
@@ -21,6 +22,8 @@ export class AddressFormComponent {
       zone: ['', Validators.required],
       observation: ['']
     });
+
+    this.homeZones = this.getHomeZoneOptions();
   }
 
   submit() {
@@ -45,5 +48,12 @@ export class AddressFormComponent {
       formValues.observation,
       []
     );
+  }
+
+  private getHomeZoneOptions(): { value: string, label: string }[] {
+    return Object.keys(HomeZone).map(key => ({
+      value: key.toUpperCase(),
+      label: HomeZone[key as keyof typeof HomeZone]
+    }));
   }
 }

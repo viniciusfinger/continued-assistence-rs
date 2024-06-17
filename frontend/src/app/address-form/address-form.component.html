@@ -26,8 +26,9 @@
           <div class="form-group">
             <label for="zone">Zona</label>
             <select class="form-control" id="zone" formControlName="zone" name="zone">
-              <option value="rural">Rural</option>
-              <option value="urbano">Urbano</option>
+              <option *ngFor="let zone of homeZones" [value]="zone.value">
+                {{ zone.label }}
+              </option>
             </select>
           </div>
           <div class="form-group">
