@@ -1,43 +1,115 @@
-<div class="container mt-5">
-    <div class="row justify-content-center">
-      <div class="col-12 col-md-8 col-lg-6">
-        <h2>Cadastro de Residências 🏡</h2>
-        <form [formGroup]="addressForm" (ngSubmit)="submit()">
-          <div class="form-group">
-            <label for="street">Rua</label>
-            <input type="text" class="form-control" id="street" placeholder="Digite a rua" formControlName="street" name="street">
-          </div>
-          <div class="form-group">
-            <label for="number">Número</label>
-            <input type="text" class="form-control" id="number" placeholder="Digite o número" formControlName="number" name="number">
-          </div>
-          <div class="form-group">
-            <label for="cep">CEP</label>
-            <input type="text" class="form-control" id="cep" placeholder="Digite o CEP" formControlName="cep" name="cep">
-          </div>
-          <div class="form-group">
-            <label for="neighbourhood">Bairro</label>
-            <input type="text" class="form-control" id="neighbourhood" placeholder="Digite o bairro" formControlName="neighbourhood" name="neighbourhood">
-          </div>
-          <div class="form-group">
-            <label for="city">Cidade</label>
-            <input type="text" class="form-control" id="city" placeholder="Digite a cidade" formControlName="city" name="city">
-          </div>
-          <div class="form-group">
-            <label for="zone">Zona</label>
-            <select class="form-control" id="zone" formControlName="zone" name="zone">
-              <option *ngFor="let zone of homeZones" [value]="zone.value">
-                {{ zone.label }}
-              </option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="observation">Observação</label>
-            <textarea class="form-control" id="observation" rows="3" placeholder="Digite uma observação" formControlName="observation" name="observation"></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary mt-2">Salvar</button>
-        </form>
-      </div>
+<div class="container mt-5 mb-4">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6">
+      <h2>Cadastro de Residências 🏡</h2>
+      <form [formGroup]="addressForm" (ngSubmit)="submit()">
+        <div class="form-group mt-2">
+          <label for="street">Rua</label>
+          <input
+            type="text"
+            class="form-control"
+            id="street"
+            placeholder="Digite a rua"
+            formControlName="street"
+            name="street"
+          />
+        </div>
+        <div class="form-group mt-2">
+          <label for="number">Número</label>
+          <input
+            type="text"
+            class="form-control"
+            id="number"
+            placeholder="Digite o número"
+            formControlName="number"
+            name="number"
+          />
+        </div>
+        <div class="form-group mt-2">
+          <label for="cep">CEP</label>
+          <input
+            type="text"
+            class="form-control"
+            id="cep"
+            placeholder="Digite o CEP"
+            formControlName="cep"
+            name="cep"
+          />
+        </div>
+        <div class="form-group mt-2">
+          <label for="neighbourhood">Bairro</label>
+          <input
+            type="text"
+            class="form-control"
+            id="neighbourhood"
+            placeholder="Digite o bairro"
+            formControlName="neighbourhood"
+            name="neighbourhood"
+          />
+        </div>
+        <div class="form-group mt-2">
+          <label for="city">Cidade</label>
+          <input
+            type="text"
+            class="form-control"
+            id="city"
+            placeholder="Digite a cidade"
+            formControlName="city"
+            name="city"
+          />
+        </div>
+        <div class="form-group mt-2">
+          <label for="zone">Zona</label>
+          <select
+            class="form-control"
+            id="zone"
+            formControlName="zone"
+            name="zone"
+          >
+            <option *ngFor="let zone of homeZones" [value]="zone.value">
+              {{ zone.label }}
+            </option>
+          </select>
+        </div>
+        <div class="form-group mt-3">
+          <label for="homes" class="form-label">Residências no Endereço</label>
+          <ul class="list-group">
+            <li
+              *ngFor="let home of homes; let i = index"
+              class="list-group-item d-flex justify-content-between align-items-center"
+            >
+              <div class="container">
+                <p class="mb-1">
+                  <strong>Complemento:</strong> {{ home.complement }}
+                </p>
+                <p class="mb-1">
+                  <strong>Material:</strong> {{ home.material }}
+                </p>
+              </div>
+              <div class="btn-group" role="group">
+                <button class="btn btn-warning btn-sm">Editar</button>
+                <button class="btn btn-danger btn-sm">Remover</button>
+              </div>
+            </li>
+          </ul>
+          <button class="btn btn-primary btn-sm mt-2">Adicionar</button>
+        </div>
+        <div class="form-group mt-3">
+          <label for="observation">Observação</label>
+          <textarea
+            class="form-control"
+            id="observation"
+            rows="3"
+            placeholder="Digite uma observação"
+            formControlName="observation"
+            name="observation"
+          ></textarea>
+        </div>
+        <div class="btn-group mt-3" role="group">
+          <button class="btn btn-primary btn-sm">Salvar</button>
+          <button class="btn btn-danger btn-sm">Cancelar</button>
+        </div>
+      </form>
     </div>
   </div>
-  
+</div>

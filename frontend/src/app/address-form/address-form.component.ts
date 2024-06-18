@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AddressDTO } from '../model/dto/address-dto';
 import { HomeZone } from '../model/enum/home-zone';
+import { HomeDTO } from '../model/dto/home-dto';
+import { HomeMaterial } from '../model/enum/home-material';
+import { FloorMaterial } from '../model/enum/floor-material';
 
 @Component({
   selector: 'app-address-form',
@@ -11,6 +14,7 @@ import { HomeZone } from '../model/enum/home-zone';
 export class AddressFormComponent {
   homeZones: { value: string, label: string }[] = [];
   addressForm: FormGroup;
+  homes: HomeDTO[];
 
   constructor(private fb: FormBuilder) {
     this.addressForm = this.fb.group({
@@ -24,6 +28,40 @@ export class AddressFormComponent {
     });
 
     this.homeZones = this.getHomeZoneOptions();
+    
+    //todo: remove this, temporary
+    this.homes = [
+      new HomeDTO(
+        null,
+        "Complemento da casa",
+        true,
+        [],
+        [],
+        50000,
+        HomeMaterial.MASONRY, 
+        FloorMaterial.CEMENT,
+        true,
+        true,
+        true,
+        3,
+        3
+      ),
+      new HomeDTO(
+        null,
+        "Complemento da casa",
+        true,
+        [],
+        [],
+        50000,
+        HomeMaterial.MASONRY, 
+        FloorMaterial.CEMENT,
+        true,
+        true,
+        true,
+        3,
+        3
+      )
+    ]
   }
 
   submit() {
