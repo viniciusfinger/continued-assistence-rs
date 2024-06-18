@@ -85,10 +85,15 @@
                 <p class="mb-1">
                   <strong>Material:</strong> {{ home.material }}
                 </p>
+                <p class="mb-1">
+                  <strong>Qtd. Pessoas:</strong> {{ home.persons.length }}
+                </p>
               </div>
               <div class="btn-group" role="group">
                 <button class="btn btn-warning btn-sm">Editar</button>
-                <button class="btn btn-danger btn-sm">Remover</button>
+                <button class="btn btn-danger btn-sm" (click)="removeHome(i)">
+                  Remover
+                </button>
               </div>
             </li>
           </ul>
