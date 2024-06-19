@@ -7,13 +7,15 @@ import { AddressFormComponent } from './address-form/address-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeFormComponent } from './home-form/home-form.component';
 import { NecessityFormComponent } from './necessity-form/necessity-form.component';
+import { AddressTableComponent } from './address-table/address-table.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AddressFormComponent,
     HomeFormComponent,
-    NecessityFormComponent
+    NecessityFormComponent,
+    AddressTableComponent
   ],
   imports: [
     BrowserModule,
