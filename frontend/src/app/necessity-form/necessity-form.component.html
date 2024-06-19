@@ -1,0 +1,51 @@
+<div class="container mt-5 mb-5">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6">
+      <h2>Cadastro de Necessidade 🧦🍝🧽</h2>
+      <form [formGroup]="necessityForm" (ngSubmit)="submit()">
+        <div class="form-group mt-2">
+          <label for="complement">Descrição</label>
+          <input
+            type="text"
+            class="form-control"
+            id="description"
+            placeholder="Descreva a necessidade"
+            formControlName="description"
+            name="description"
+          />
+        </div>
+        <div class="form-group mt-2">
+          <label for="quantity">Quantidade</label>
+          <input
+            type="text"
+            class="form-control"
+            id="quantity"
+            placeholder="0"
+            formControlName="quantity"
+            name="quantity"
+          />
+        </div>
+        <div class="form-group mt-2">
+          <label for="category">Categoria</label>
+          <select
+            class="form-control"
+            id="category"
+            formControlName="category"
+            name="category"
+          >
+            <option
+              *ngFor="let category of categories"
+              [value]="category.value"
+            >
+              {{ category.label }}
+            </option>
+          </select>
+        </div>
+        <div class="btn-group mt-3" role="group">
+          <button class="btn btn-primary btn-sm">Salvar</button>
+          <button class="btn btn-danger btn-sm">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
