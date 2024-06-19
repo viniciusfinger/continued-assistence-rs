@@ -68,15 +68,6 @@ export class AddressFormComponent {
     ];
   }
 
-  submit() {
-    if (this.addressForm.valid) {
-      console.log("Form is valid");
-      console.log(this.addressForm.value);
-    } else {
-      console.log("Form is invalid");
-    }
-  }
-
   removeHome(index: number) {
     this.homes.splice(index, 1);
   }
@@ -106,5 +97,14 @@ export class AddressFormComponent {
   navigateToHomeForm() {
     this.buildAddress()
     this.router.navigate(["home-form"], {state: {address: this.address}});
+  }
+
+  save() {
+    if (this.addressForm.valid) {
+      console.log("Form is valid");
+      console.log(this.addressForm.value);
+    } else {
+      console.log("Form is invalid");
+    }
   }
 }

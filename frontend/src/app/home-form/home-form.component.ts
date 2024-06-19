@@ -8,6 +8,7 @@ import { HomeZone } from "../model/enum/home-zone";
 import { ActivatedRoute, Router } from "@angular/router";
 import { NecessityDTO } from "../model/dto/necessity-dto";
 import { NecessityCategory } from "../model/enum/necessity-category";
+import { state } from "@angular/animations";
 
 @Component({
   selector: "app-home-form",
@@ -19,16 +20,19 @@ export class HomeFormComponent implements OnInit {
   floorMaterial: { value: string; label: string }[] = [];
 
   homeForm: FormGroup;
+  home!: HomeDTO;
+
   address!: AddressDTO;
 
   necessities!: NecessityDTO[];
 
-  constructor(private route: ActivatedRoute, private router: Router, private fb: FormBuilder) {
-    //todo: está carregando depois do html, verificar
-    this.homeMaterials = this.getHomeMaterialOptions();
-    this.floorMaterial = this.getFloorMaterialOptions();
-
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private fb: FormBuilder
+  ) {
     this.homeForm = this.fb.group({
+      id: [null],
       complement: ["", Validators.required],
       isRented: ["", Validators.required],
       averageFamilyIncome: ["", Validators.required],
@@ -38,18 +42,13 @@ export class HomeFormComponent implements OnInit {
       roomsNumber: [""],
       bathroomsNumber: ["", Validators.required],
     });
-    //todo: implement necessitiesDTO[] and personsDTO[]
-  }
-  ngOnInit(): void {
-    this.address = history.state.address;
+
+    this.homeMaterials = this.getHomeMaterialOptions();
+    this.floorMaterial = this.getFloorMaterialOptions();
   }
 
-  submit() {
-    if (this.homeForm.valid) {
-      //todo: implement
-    } else {
-      console.log("Form is invalid");
-    }
+  ngOnInit(): void {
+    this.address = history.state.address;
   }
 
   private getHomeMaterialOptions(): { value: string; label: string }[] {
@@ -64,5 +63,29 @@ export class HomeFormComponent implements OnInit {
       value: key.toUpperCase(),
       label: FloorMaterial[key as keyof typeof FloorMaterial],
     }));
+  }
+
+  private buildHome() {
+    this.home = this.homeForm.value;
+  }
+
+  openNecessityForm() {
+    this.buildHome();
+    this.router.navigate(["necessity-form"], {
+      state: { home: this.home },
+    });
+  }
+
+  save() {
+    let home: HomeDTO = this.homeForm.value;
+    home.necessities = this.necessities;
+    this.address.homes.push(home);
+    this.router.navigate(["home-form"], { state: { address: this.address } });
+  }
+
+  cancel() {
+    this.router.navigate(["address-form"], {
+      state: { address: this.address },
+    });
   }
 }
