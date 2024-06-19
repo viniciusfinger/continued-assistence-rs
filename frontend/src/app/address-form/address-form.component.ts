@@ -5,6 +5,8 @@ import { HomeZone } from "../model/enum/home-zone";
 import { HomeDTO } from "../model/dto/home-dto";
 import { HomeMaterial } from "../model/enum/home-material";
 import { FloorMaterial } from "../model/enum/floor-material";
+import { Router } from "@angular/router";
+import { state } from "@angular/animations";
 
 @Component({
   selector: "app-address-form",
@@ -14,9 +16,11 @@ import { FloorMaterial } from "../model/enum/floor-material";
 export class AddressFormComponent {
   homeZones: { value: string; label: string }[] = [];
   addressForm: FormGroup;
+  address!: AddressDTO;
+
   homes: HomeDTO[];
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private router: Router) {
     this.addressForm = this.fb.group({
       street: ["", Validators.required],
       number: ["", Validators.required],
@@ -66,9 +70,8 @@ export class AddressFormComponent {
 
   submit() {
     if (this.addressForm.valid) {
-      const formValues = this.addressForm.value;
-      let address = this.createAddressDTO(formValues);
-      console.log(address);
+      console.log("Form is valid");
+      console.log(this.addressForm.value);
     } else {
       console.log("Form is invalid");
     }
@@ -78,8 +81,9 @@ export class AddressFormComponent {
     this.homes.splice(index, 1);
   }
 
-  private createAddressDTO(formValues: any): AddressDTO {
-    return new AddressDTO(
+  private buildAddress() {
+    let formValues = this.addressForm.value;
+    this.address = new AddressDTO(
       null,
       formValues.street,
       formValues.number,
@@ -97,5 +101,10 @@ export class AddressFormComponent {
       value: key.toUpperCase(),
       label: HomeZone[key as keyof typeof HomeZone],
     }));
+  }
+
+  navigateToHomeForm() {
+    this.buildAddress()
+    this.router.navigate(["home-form"], {state: {address: this.address}});
   }
 }
