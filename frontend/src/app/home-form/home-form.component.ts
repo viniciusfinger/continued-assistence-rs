@@ -6,6 +6,8 @@ import { FloorMaterial } from "../model/enum/floor-material";
 import { AddressDTO } from "../model/dto/address-dto";
 import { HomeZone } from "../model/enum/home-zone";
 import { ActivatedRoute, Router } from "@angular/router";
+import { NecessityDTO } from "../model/dto/necessity-dto";
+import { NecessityCategory } from "../model/enum/necessity-category";
 
 @Component({
   selector: "app-home-form",
@@ -18,6 +20,8 @@ export class HomeFormComponent implements OnInit {
 
   homeForm: FormGroup;
   address!: AddressDTO;
+
+  necessities!: NecessityDTO[];
 
   constructor(private route: ActivatedRoute, private router: Router, private fb: FormBuilder) {
     //todo: está carregando depois do html, verificar
@@ -34,7 +38,6 @@ export class HomeFormComponent implements OnInit {
       roomsNumber: [""],
       bathroomsNumber: ["", Validators.required],
     });
-
     //todo: implement necessitiesDTO[] and personsDTO[]
   }
   ngOnInit(): void {

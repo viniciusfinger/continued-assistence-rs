@@ -1,8 +1,11 @@
-<div class="container mt-5 mb-4">
+<div class="container mt-5 mb-5">
   <div class="row justify-content-center">
     <div class="col-12 col-md-8 col-lg-6">
       <h2>Cadastro de Residência 🏡</h2>
-      <span>Para Rua {{ address.street }}, {{ address.number }} - {{ address.neighbourhood }}</span>
+      <span
+        >Para Rua {{ address.street }}, {{ address.number }} -
+        {{ address.neighbourhood }}</span
+      >
       <form [formGroup]="homeForm" (ngSubmit)="submit()">
         <div class="form-group mt-2">
           <label for="complement">Complemento</label>
@@ -104,7 +107,10 @@
             formControlName="homeMaterial"
             name="homeMaterial"
           >
-            <option *ngFor="let material of homeMaterials" [value]="material.value">
+            <option
+              *ngFor="let material of homeMaterials"
+              [value]="material.value"
+            >
               {{ material.label }}
             </option>
           </select>
@@ -117,10 +123,38 @@
             formControlName="floorMaterial"
             name="floorMaterial"
           >
-            <option *ngFor="let material of floorMaterial" [value]="material.value">
+            <option
+              *ngFor="let material of floorMaterial"
+              [value]="material.value"
+            >
               {{ material.label }}
             </option>
           </select>
+        </div>
+        <div class="form-group mt-3">
+          <label for="necessity" class="form-label">Necessidades</label>
+          <ul class="list-group">
+            <li
+              *ngFor="let necessity of necessities; let i = index"
+              class="list-group-item d-flex justify-content-between align-items-center"
+            >
+              <div class="container">
+                <p class="mb-1">
+                  <strong>Descrição:</strong> {{ necessity.description }}
+                </p>
+                <p class="mb-1">
+                  <strong>Quantidade:</strong> {{ necessity.quantity }}
+                </p>
+              </div>
+              <div class="btn-group" role="group">
+                <button class="btn btn-warning btn-sm">Editar</button>
+                <button class="btn btn-danger btn-sm">Remover</button>
+              </div>
+            </li>
+          </ul>
+          <button id="addNecessity" class="btn btn-primary btn-sm mt-2">
+            Adicionar
+          </button>
         </div>
         <div class="btn-group mt-3" role="group">
           <button class="btn btn-primary btn-sm">Salvar</button>
