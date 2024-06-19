@@ -1,0 +1,131 @@
+<div class="container mt-5 mb-4">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6">
+      <h2>Cadastro de Residência 🏡</h2>
+      <form [formGroup]="homeForm" (ngSubmit)="submit()">
+        <div class="form-group mt-2">
+          <label for="complement">Complemento</label>
+          <input
+            type="text"
+            class="form-control"
+            id="complement"
+            placeholder="Digite o complemento (identifição dentro do endereço)"
+            formControlName="complement"
+            name="complement"
+          />
+        </div>
+        <div class="form-group mt-2">
+          <label for="roomsNumber">Número de Cômodos</label>
+          <input
+            type="number"
+            class="form-control"
+            id="roomsNumber"
+            placeholder="0"
+            formControlName="roomsNumber"
+            name="roomsNumber"
+          />
+        </div>
+        <div class="form-group mt-2">
+          <label for="bathroomsNumber">Número de Banheiros</label>
+          <input
+            type="number"
+            class="form-control"
+            id="bathroomsNumber"
+            placeholder="0"
+            formControlName="bathroomsNumber"
+            name="bathroomsNumber"
+          />
+        </div>
+        <div class="form-group mt-2">
+          <label for="isRented">Residência alugada?</label>
+          <select
+            class="form-control"
+            id="isRented"
+            formControlName="isRented"
+            name="isRented"
+          >
+            <option [value]="true">Sim</option>
+            <option [value]="false">Não</option>
+          </select>
+        </div>
+        <div class="form-group mt-2">
+          <label for="hasWaterTank">Tem caixa d'àgua?</label>
+          <select
+            class="form-control"
+            id="hasWaterTank"
+            formControlName="hasWaterTank"
+            name="hasWaterTank"
+          >
+            <option [value]="true">Sim</option>
+            <option [value]="false">Não</option>
+          </select>
+        </div>
+        <div class="form-group mt-2">
+          <label for="hasWaterPipe">Tem água encanada?</label>
+          <select
+            class="form-control"
+            id="hasWaterPipe"
+            formControlName="hasWaterPipe"
+            name="hasWaterPipe"
+          >
+            <option [value]="true">Sim</option>
+            <option [value]="false">Não</option>
+          </select>
+        </div>
+        <div class="form-group mt-2">
+          <label for="hasSepticTank">Tem fossa séptica?</label>
+          <select
+            class="form-control"
+            id="hasSepticTank"
+            formControlName="hasSepticTank"
+            name="hasSepticTank"
+          >
+            <option [value]="true">Sim</option>
+            <option [value]="false">Não</option>
+          </select>
+        </div>
+        <div class="form-group mt-2">
+          <label for="averageFamilyIncome">Renda Média Familiar</label>
+          <input
+            type="text"
+            class="form-control"
+            id="averageFamilyIncome"
+            placeholder="Digite a renda média familiar em reais"
+            formControlName="averageFamilyIncome"
+            name="averageFamilyIncome"
+          />
+        </div>
+        <div class="form-group mt-2">
+          <label for="homeMaterial">Material da Residência</label>
+          <select
+            class="form-control"
+            id="homeMaterial"
+            formControlName="homeMaterial"
+            name="homeMaterial"
+          >
+            <option *ngFor="let material of homeMaterials" [value]="material.value">
+              {{ material.label }}
+            </option>
+          </select>
+        </div>
+        <div class="form-group mt-2">
+          <label for="floorMaterial">Material da Chão da Residência</label>
+          <select
+            class="form-control"
+            id="floorMaterial"
+            formControlName="floorMaterial"
+            name="floorMaterial"
+          >
+            <option *ngFor="let material of floorMaterial" [value]="material.value">
+              {{ material.label }}
+            </option>
+          </select>
+        </div>
+        <div class="btn-group mt-3" role="group">
+          <button class="btn btn-primary btn-sm">Salvar</button>
+          <button class="btn btn-danger btn-sm">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
