@@ -156,6 +156,28 @@
             Adicionar
           </button>
         </div>
+        <div class="form-group mt-3">
+          <label for="persons" class="form-label">Pessoas</label>
+          <ul class="list-group">
+            <li
+              *ngFor="let person of persons; let i = index"
+              class="list-group-item d-flex justify-content-between align-items-center"
+            >
+              <div class="container">
+                <p class="mb-1">
+                  <strong>Nome:</strong> {{ person.name }}
+                </p>
+              </div>
+              <div class="btn-group" role="group">
+                <button class="btn btn-warning btn-sm">Editar</button>
+                <button class="btn btn-danger btn-sm">Remover</button>
+              </div>
+            </li>
+          </ul>
+          <button id="addPerson" class="btn btn-primary btn-sm mt-2" (click)="openNecessityForm()">
+            Adicionar
+          </button>
+        </div>
         <div class="btn-group mt-3" role="group">
           <button class="btn btn-primary btn-sm">Salvar</button>
           <button class="btn btn-danger btn-sm" (click)="cancel()">Cancelar</button>

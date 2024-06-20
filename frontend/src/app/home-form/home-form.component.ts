@@ -9,6 +9,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { Necessity } from "../model/necessity";
 import { NecessityCategory } from "../model/enum/necessity-category";
 import { state } from "@angular/animations";
+import { Person } from "../model/person";
 
 @Component({
   selector: "app-home-form",
@@ -25,6 +26,7 @@ export class HomeFormComponent implements OnInit {
   address!: Address;
 
   necessities!: Necessity[];
+  persons!: Person[];
 
   constructor(
     private route: ActivatedRoute,
