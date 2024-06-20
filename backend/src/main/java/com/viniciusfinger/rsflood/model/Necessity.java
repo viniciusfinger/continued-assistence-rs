@@ -16,7 +16,7 @@ public class Necessity {
 
     private String description;
 
-    private Long quantity;
+    private String quantity;
 
     @Enumerated(EnumType.STRING)
     private NecessityCategory category;
