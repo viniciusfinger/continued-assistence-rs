@@ -3,7 +3,7 @@ import { PersonRace } from "./enum/person-race";
 import { Schooling } from "./enum/schooling";
 
 export class Person {
-    id: number;
+    id: number | null;
     name: string;
     cpf: string;
     birthDate: Date;
@@ -18,7 +18,7 @@ export class Person {
     isPCD: boolean;
 
     constructor(
-        id: number,
+        id: number | null,
         name: string,
         cpf: string,
         birthDate: Date,
