@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
-import { HomeMaterial } from '../model/enum/home-material';
-import { FloorMaterial } from '../model/enum/floor-material';
+
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Necessity } from '../model/necessity';
-import { Address } from '../model/address';
-import { NecessityCategory } from '../model/enum/necessity-category';
-import { Home } from '../model/home';
+import { Home } from '../../model/home';
+import { NecessityCategory } from '../../model/enum/necessity-category';
+import { Necessity } from '../../model/necessity';
+
 
 @Component({
   selector: 'app-necessity-form',

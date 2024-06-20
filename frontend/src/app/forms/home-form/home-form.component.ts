@@ -1,15 +1,15 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { Home } from "../model/home";
-import { HomeMaterial } from "../model/enum/home-material";
-import { FloorMaterial } from "../model/enum/floor-material";
-import { Address } from "../model/address";
-import { HomeZone } from "../model/enum/home-zone";
+import { Home } from "../../model/home";
+import { HomeMaterial } from "../../model/enum/home-material";
+import { FloorMaterial } from "../../model/enum/floor-material";
+import { Address } from "../../model/address";
+import { HomeZone } from "../../model/enum/home-zone";
 import { ActivatedRoute, Router } from "@angular/router";
-import { Necessity } from "../model/necessity";
-import { NecessityCategory } from "../model/enum/necessity-category";
+import { Necessity } from "../../model/necessity";
+import { NecessityCategory } from "../../model/enum/necessity-category";
 import { state } from "@angular/animations";
-import { Person } from "../model/person";
+import { Person } from "../../model/person";
 
 @Component({
   selector: "app-home-form",

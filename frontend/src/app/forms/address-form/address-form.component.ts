@@ -1,12 +1,10 @@
 import { Component } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { Address } from "../model/address";
-import { HomeZone } from "../model/enum/home-zone";
-import { Home } from "../model/home";
-import { HomeMaterial } from "../model/enum/home-material";
-import { FloorMaterial } from "../model/enum/floor-material";
 import { Router } from "@angular/router";
 import { state } from "@angular/animations";
+import { Address } from "../../model/address";
+import { Home } from "../../model/home";
+import { HomeZone } from "../../model/enum/home-zone";
 
 @Component({
   selector: "app-address-form",
