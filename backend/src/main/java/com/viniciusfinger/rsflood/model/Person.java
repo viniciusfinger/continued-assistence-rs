@@ -1,6 +1,7 @@
 package com.viniciusfinger.rsflood.model;
 
 import com.viniciusfinger.rsflood.enums.BiologicalSex;
+import com.viniciusfinger.rsflood.enums.PersonRace;
 import com.viniciusfinger.rsflood.enums.Schooling;
 import jakarta.persistence.*;
 import lombok.Getter;

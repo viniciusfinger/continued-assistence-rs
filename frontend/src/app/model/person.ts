@@ -1,8 +1,8 @@
-import { BiologicalSex } from "../enum/biological-sex";
-import { PersonRace } from "../enum/person-race";
-import { Schooling } from "../enum/schooling";
+import { BiologicalSex } from "./enum/biological-sex";
+import { PersonRace } from "./enum/person-race";
+import { Schooling } from "./enum/schooling";
 
-export class PersonDTO {
+export class Person {
     id: number;
     name: string;
     cpf: string;

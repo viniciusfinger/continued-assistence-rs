@@ -24,7 +24,7 @@ public class Home {
     private Boolean isRented;
 
     @OneToOne
-    private HomeStructure homeStructure;
+    private HomeStructure structure;
 
     @OneToMany(mappedBy = "home")
     private List<Necessity> necessities;

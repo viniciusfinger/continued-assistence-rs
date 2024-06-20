@@ -1,4 +1,4 @@
-package com.viniciusfinger.rsflood.model;
+package com.viniciusfinger.rsflood.enums;
 
 import lombok.Getter;
 

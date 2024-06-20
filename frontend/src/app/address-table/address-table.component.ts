@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AddressDTO } from '../model/dto/address-dto';
+import { Address } from '../model/address';
 import { HomeZone } from '../model/enum/home-zone';
 
 @Component({
@@ -10,7 +10,7 @@ import { HomeZone } from '../model/enum/home-zone';
 export class AddressTableComponent {
 
   addresses = [
-    new AddressDTO(1, "Alberto abc", "000", "9210000", "Guajuviras", "Canoas", HomeZone.RURAL, "6", []),
-    new AddressDTO(2, "teste 2", "1", "2", "3", "4", HomeZone.RURAL, "6", [])
+    new Address(1, "Alberto abc", "000", "9210000", "Guajuviras", "Canoas", HomeZone.RURAL, "6", []),
+    new Address(2, "teste 2", "1", "2", "3", "4", HomeZone.RURAL, "6", [])
   ]
 }

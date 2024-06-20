@@ -1,12 +1,12 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { HomeDTO } from "../model/dto/home-dto";
+import { Home } from "../model/home";
 import { HomeMaterial } from "../model/enum/home-material";
 import { FloorMaterial } from "../model/enum/floor-material";
-import { AddressDTO } from "../model/dto/address-dto";
+import { Address } from "../model/address";
 import { HomeZone } from "../model/enum/home-zone";
 import { ActivatedRoute, Router } from "@angular/router";
-import { NecessityDTO } from "../model/dto/necessity-dto";
+import { Necessity } from "../model/necessity";
 import { NecessityCategory } from "../model/enum/necessity-category";
 import { state } from "@angular/animations";
 
@@ -20,11 +20,11 @@ export class HomeFormComponent implements OnInit {
   floorMaterial: { value: string; label: string }[] = [];
 
   homeForm: FormGroup;
-  home!: HomeDTO;
+  home!: Home;
 
-  address!: AddressDTO;
+  address!: Address;
 
-  necessities!: NecessityDTO[];
+  necessities!: Necessity[];
 
   constructor(
     private route: ActivatedRoute,
@@ -77,7 +77,7 @@ export class HomeFormComponent implements OnInit {
   }
 
   save() {
-    let home: HomeDTO = this.homeForm.value;
+    let home: Home = this.homeForm.value;
     home.necessities = this.necessities;
     this.address.homes.push(home);
     this.router.navigate(["home-form"], { state: { address: this.address } });

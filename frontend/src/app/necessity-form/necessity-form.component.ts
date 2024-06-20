@@ -3,10 +3,10 @@ import { HomeMaterial } from '../model/enum/home-material';
 import { FloorMaterial } from '../model/enum/floor-material';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { NecessityDTO } from '../model/dto/necessity-dto';
-import { AddressDTO } from '../model/dto/address-dto';
+import { Necessity } from '../model/necessity';
+import { Address } from '../model/address';
 import { NecessityCategory } from '../model/enum/necessity-category';
-import { HomeDTO } from '../model/dto/home-dto';
+import { Home } from '../model/home';
 
 @Component({
   selector: 'app-necessity-form',
@@ -17,7 +17,7 @@ export class NecessityFormComponent {
   categories: { value: string; label: string }[] = [];
 
   necessityForm: FormGroup;
-  home!: HomeDTO;
+  home!: Home;
 
   constructor(private route: ActivatedRoute, private router: Router, private fb: FormBuilder) {
     this.necessityForm = this.fb.group({
@@ -42,7 +42,7 @@ export class NecessityFormComponent {
   }
 
   save() {
-    const necessity: NecessityDTO = this.necessityForm.value;
+    const necessity: Necessity = this.necessityForm.value;
     this.home.necessities.push(necessity);
     this.router.navigate(['home-form'], { state: { home: this.home } });
   }

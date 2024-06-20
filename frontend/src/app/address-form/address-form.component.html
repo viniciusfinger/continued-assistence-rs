@@ -83,7 +83,7 @@
                   <strong>Complemento:</strong> {{ home.complement }}
                 </p>
                 <p class="mb-1">
-                  <strong>Material:</strong> {{ home.material }}
+                  <strong>Material:</strong> {{ home.structure.material }}
                 </p>
                 <p class="mb-1">
                   <strong>Qtd. Pessoas:</strong> {{ home.persons.length }}
@@ -112,7 +112,7 @@
         </div>
         <div class="btn-group mt-3" role="group">
           <button class="btn btn-primary btn-sm" (click)="save()">Salvar</button>
-          <button class="btn btn-danger btn-sm">Cancelar</button>
+          <button class="btn btn-danger btn-sm" routerLink="/address">Cancelar</button>
         </div>
       </form>
     </div>

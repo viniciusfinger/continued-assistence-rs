@@ -1,8 +1,8 @@
 import { Component } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { AddressDTO } from "../model/dto/address-dto";
+import { Address } from "../model/address";
 import { HomeZone } from "../model/enum/home-zone";
-import { HomeDTO } from "../model/dto/home-dto";
+import { Home } from "../model/home";
 import { HomeMaterial } from "../model/enum/home-material";
 import { FloorMaterial } from "../model/enum/floor-material";
 import { Router } from "@angular/router";
@@ -16,9 +16,9 @@ import { state } from "@angular/animations";
 export class AddressFormComponent {
   homeZones: { value: string; label: string }[] = [];
   addressForm: FormGroup;
-  address!: AddressDTO;
+  address!: Address;
 
-  homes: HomeDTO[];
+  homes: Home[];
 
   constructor(private fb: FormBuilder, private router: Router) {
     this.addressForm = this.fb.group({
@@ -34,38 +34,7 @@ export class AddressFormComponent {
     this.homeZones = this.getHomeZoneOptions();
 
     //todo: remove this, temporary
-    this.homes = [
-      new HomeDTO(
-        null,
-        "Complemento da casa 1",
-        true,
-        [],
-        [],
-        50000,
-        HomeMaterial.MASONRY,
-        FloorMaterial.CEMENT,
-        true,
-        true,
-        true,
-        3,
-        3
-      ),
-      new HomeDTO(
-        null,
-        "Complemento da casa 2",
-        true,
-        [],
-        [],
-        50000,
-        HomeMaterial.MASONRY,
-        FloorMaterial.CEMENT,
-        true,
-        true,
-        true,
-        3,
-        3
-      ),
-    ];
+    this.homes = []
   }
 
   removeHome(index: number) {
@@ -74,7 +43,7 @@ export class AddressFormComponent {
 
   private buildAddress() {
     let formValues = this.addressForm.value;
-    this.address = new AddressDTO(
+    this.address = new Address(
       null,
       formValues.street,
       formValues.number,

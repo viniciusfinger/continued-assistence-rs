@@ -1,7 +1,7 @@
-import { HomeZone } from "../enum/home-zone";
-import { HomeDTO } from "./home-dto";
+import { HomeZone } from "./enum/home-zone";
+import { Home as Home } from "./home";
 
-export class AddressDTO {
+export class Address {
     id: number | null;
     street: string;
     number: string;
@@ -10,7 +10,7 @@ export class AddressDTO {
     city: string;
     zone: HomeZone;
     observation: string;
-    homes: HomeDTO[];
+    homes: Home[];
 
     constructor(
         id: number | null,
@@ -21,7 +21,7 @@ export class AddressDTO {
         city: string,
         zone: HomeZone,
         observation: string,
-        homes: HomeDTO[]
+        homes: Home[]
     ) {
         this.id = id;
         this.street = street;

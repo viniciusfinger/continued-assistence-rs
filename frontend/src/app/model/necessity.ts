@@ -1,6 +1,6 @@
-import { NecessityCategory } from "../enum/necessity-category";
+import { NecessityCategory } from "./enum/necessity-category";
 
-export class NecessityDTO {
+export class Necessity {
     id: number | null;
     description: string;
     quantity: number;
@@ -13,4 +13,3 @@ export class NecessityDTO {
         this.category = category;
     }
 }
-
