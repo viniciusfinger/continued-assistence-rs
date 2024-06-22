@@ -1,10 +1,11 @@
 import { Component } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
-import { state } from "@angular/animations";
 import { Address } from "../../model/address";
 import { Home } from "../../model/home";
 import { HomeZone } from "../../model/enum/home-zone";
+import { CepService } from "../../services/cep.service";
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: "app-address-form",
@@ -15,14 +16,14 @@ export class AddressFormComponent {
   homeZones: { value: string; label: string }[] = [];
   addressForm: FormGroup;
   address!: Address;
-
   homes: Home[];
+  loading: boolean = false;
 
-  constructor(private fb: FormBuilder, private router: Router) {
+  constructor(private fb: FormBuilder, private router: Router, private cepService: CepService, private toastr: ToastrService) {
     this.addressForm = this.fb.group({
       street: ["", Validators.required],
       number: ["", Validators.required],
-      cep: ["", Validators.required],
+      cep: ["", [Validators.required, Validators.pattern(/^\d{5}-\d{3}$/)]],
       neighbourhood: ["", Validators.required],
       city: ["", Validators.required],
       zone: ["", Validators.required],
@@ -72,6 +73,46 @@ export class AddressFormComponent {
       console.log(this.addressForm.value);
     } else {
       console.log("Form is invalid");
+    }
+  }
+
+  consultarCep(): void {
+    const cep = this.addressForm.get('cep')?.value;
+    if (cep) {
+      this.loading = true;
+      this.addressForm.disable();
+      this.cepService.consultarCep(cep).subscribe({
+        next: data => {
+          if (data.logradouro) {
+            this.addressForm.patchValue({
+              street: data.logradouro,
+              neighbourhood: data.bairro,
+              city: data.localidade
+            });
+            this.toastr.success('CEP encontrado com sucesso!', 'Sucesso', {
+              progressBar: true,
+              timeOut: 3000
+            });
+          } else {
+            this.toastr.warning('CEP não encontrado.', 'Aviso', {
+              progressBar: true,
+              timeOut: 3000
+            });
+          }
+        },
+        error: () => {
+          this.toastr.error('Erro ao consultar o CEP.', 'Erro', {
+            progressBar: true,
+            timeOut: 3000
+          });
+          this.loading = false;
+          this.addressForm.enable();
+        },
+        complete: () => {
+          this.loading = false;
+          this.addressForm.enable();
+        }
+      });
     }
   }
 }
