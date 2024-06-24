@@ -8,6 +8,7 @@ import { AddressTableComponent } from "./address-table/address-table.component";
 import { PersonFormComponent } from "./forms/person-form/person-form.component";
 
 const routes: Routes = [
+  { path: "", redirectTo: "/address", pathMatch: "full" },
   { path: "address-form", component: AddressFormComponent },
   { path: "home-form", component: HomeFormComponent },
   { path: "necessity-form", component: NecessityFormComponent },
