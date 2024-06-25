@@ -32,6 +32,7 @@ public class Address {
 
     private String observation;
 
+    //todo: its not saving address_it in home table, resolve.
     @OneToMany(mappedBy = "address", cascade = CascadeType.ALL)
     private List<Home> homes;
 

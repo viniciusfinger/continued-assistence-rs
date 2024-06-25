@@ -21,7 +21,4 @@ public class Necessity {
     @Enumerated(EnumType.STRING)
     private NecessityCategory category;
 
-    @ManyToOne
-    private Home home;
-
 }

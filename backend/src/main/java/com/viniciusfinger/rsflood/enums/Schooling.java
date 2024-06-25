@@ -12,7 +12,6 @@ public enum Schooling {
     HIGH_SCHOOL_CURSING("Cursando Médio"),
     HIGH_SCHOOL_COMPLETE("Médio Completo"),
     HIGHER_EDUCATION_INCOMPLETE("Superior Incompleto"),
-
     HIGHER_EDUCATION_COMPLETE("Superior Completo"),
     POSTGRADUATE("Pós-Graduação");
 

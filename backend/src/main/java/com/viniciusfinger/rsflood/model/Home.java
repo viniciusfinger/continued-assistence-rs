@@ -23,14 +23,14 @@ public class Home {
 
     private Boolean isRented;
 
+    private Double averageFamilyIncome;
+
     @OneToOne(cascade = CascadeType.ALL)
     private HomeStructure structure;
 
-    @OneToMany(mappedBy = "home", cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Necessity> necessities;
 
     @OneToMany(cascade = CascadeType.ALL)
     private List<Person> persons;
-
-    private Double averageFamilyIncome;
 }
