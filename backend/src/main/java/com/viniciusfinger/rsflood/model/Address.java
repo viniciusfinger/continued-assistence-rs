@@ -6,6 +6,7 @@ import com.viniciusfinger.rsflood.enums.HomeZone;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.Cascade;
 
 @Getter
 @Setter
@@ -31,7 +32,7 @@ public class Address {
 
     private String observation;
 
-    @OneToMany(mappedBy = "address")
+    @OneToMany(mappedBy = "address", cascade = CascadeType.ALL)
     private List<Home> homes;
 
 }
