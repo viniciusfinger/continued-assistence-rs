@@ -43,6 +43,8 @@ export class HomeFormComponent implements OnInit {
       hasSepticTank: ["", Validators.required],
       roomsNumber: [""],
       bathroomsNumber: ["", Validators.required],
+      homeMaterial: ["", Validators.required],
+      floorMaterial: ["", Validators.required],
     });
 
     this.homeMaterials = this.getHomeMaterialOptions();
@@ -68,7 +70,23 @@ export class HomeFormComponent implements OnInit {
   }
 
   private buildHome() {
-    this.home = this.homeForm.value;
+    this.home = {
+      id: this.homeForm.value.id,
+      complement: this.homeForm.value.complement,
+      isRented: this.homeForm.value.isRented,
+      averageFamilyIncome: this.homeForm.value.averageFamilyIncome,
+      necessities: [],
+      persons: [],
+      structure: {
+        material: this.homeForm.value.homeMaterial,
+        floorMaterial: this.homeForm.value.floorMaterial,
+        hasWaterTank: this.homeForm.value.hasWaterTank,
+        hasWaterPipe: this.homeForm.value.hasWaterPipe,
+        hasSepticTank: this.homeForm.value.hasSepticTank,
+        roomsNumber: this.homeForm.value.roomsNumber,
+        bathroomsNumber: this.homeForm.value.bathroomsNumber,
+      }
+    }
   }
 
   openNecessityForm() {
@@ -79,10 +97,9 @@ export class HomeFormComponent implements OnInit {
   }
 
   save() {
-    let home: Home = this.homeForm.value;
-    home.necessities = this.necessities;
-    this.address.homes.push(home);
-    this.router.navigate(["home-form"], { state: { address: this.address } });
+    this.buildHome();
+    this.address.homes.push(this.home);
+    this.router.navigate(["address-form"], { state: { address: this.address } });
   }
 
   cancel() {

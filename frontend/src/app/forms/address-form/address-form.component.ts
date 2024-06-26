@@ -1,8 +1,7 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { Router } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { Address } from "../../model/address";
-import { Home } from "../../model/home";
 import { HomeZone } from "../../model/enum/home-zone";
 import { CepService } from "../../services/cep.service";
 import { ToastrService } from 'ngx-toastr';
@@ -12,14 +11,13 @@ import { ToastrService } from 'ngx-toastr';
   templateUrl: "./address-form.component.html",
   styleUrls: ["./address-form.component.css"],
 })
-export class AddressFormComponent {
+export class AddressFormComponent implements OnInit {
   homeZones: { value: string; label: string }[] = [];
   addressForm: FormGroup;
   address!: Address;
-  homes: Home[];
   loading: boolean = false;
 
-  constructor(private fb: FormBuilder, private router: Router, private cepService: CepService, private toastr: ToastrService) {
+  constructor(private fb: FormBuilder, private router: Router, private cepService: CepService, private toastr: ToastrService, private route: ActivatedRoute) {
     this.addressForm = this.fb.group({
       street: ["", Validators.required],
       number: ["", Validators.required],
@@ -32,12 +30,15 @@ export class AddressFormComponent {
 
     this.homeZones = this.getHomeZoneOptions();
 
-    //todo: remove this, temporary
-    this.homes = []
+  }
+  ngOnInit(): void {
+    if (history.state.address){
+      this.address = history.state.address;
+    }
   }
 
   removeHome(index: number) {
-    this.homes.splice(index, 1);
+    this.address.homes.splice(index, 1);
   }
 
   private buildAddress() {
@@ -69,10 +70,9 @@ export class AddressFormComponent {
 
   save() {
     if (this.addressForm.valid) {
-      console.log("Form is valid");
-      console.log(this.addressForm.value);
+      //todo: send to backend
     } else {
-      console.log("Form is invalid");
+      //todo: tratar erro
     }
   }
 

@@ -1,5 +1,3 @@
-import { HomeMaterial } from "./enum/home-material";
-import { FloorMaterial } from "./enum/floor-material";
 import { Necessity } from "./necessity";
 import { Person } from "./person";
 import { HomeStructure } from "./home-structure";
