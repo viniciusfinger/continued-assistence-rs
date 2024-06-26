@@ -25,6 +25,7 @@ public class AddressService {
         return addressRepository.findById(id);
     }
 
+    //todo: não deveria ser uma exclusão lógica?
     public void deleteById(Long id) {
         addressRepository.deleteById(id);
     }
