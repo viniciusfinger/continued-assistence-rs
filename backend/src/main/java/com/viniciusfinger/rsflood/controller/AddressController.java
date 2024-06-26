@@ -39,6 +39,13 @@ public class AddressController {
         return ResponseEntity.status(HttpStatus.OK).body(addressOptional.get());
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Address> delete(@PathVariable Long id) {
+        addressService.deleteById(id);
+
+        return ResponseEntity.ok().build();
+    }
+
     @PostMapping
     public ResponseEntity<Address> create(@RequestBody Address address) {
         address = addressService.save(address);

@@ -25,6 +25,10 @@ public class AddressService {
         return addressRepository.findById(id);
     }
 
+    public void deleteById(Long id) {
+        addressRepository.deleteById(id);
+    }
+
     public Iterable<Address> findAll(int page, int pageSize) {
         Pageable pageable = PageRequest.of(page, pageSize);
         return addressRepository.findAll(pageable);
