@@ -39,6 +39,11 @@
         </div>
         <div class="form-group mt-3">
           <label for="homes" class="form-label">Residências no Endereço</label>
+          <div class="container" *ngIf="address.homes.length === 0">
+            <p class="mb-1">
+              💡 Nenhuma residência cadastrada. Clique em <strong>"adicionar"</strong> para cadastrar.
+            </p>
+          </div>
           <ul class="list-group">
             <li *ngFor="let home of address.homes; let i = index" class="list-group-item d-flex justify-content-between align-items-center">
               <div class="container">
