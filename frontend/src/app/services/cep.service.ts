@@ -10,7 +10,7 @@ export class CepService {
 
   constructor(private http: HttpClient) {}
 
-  consultarCep(cep: string): Observable<any> {
+  consultCep(cep: string): Observable<any> {
     return this.http.get(`${this.viaCepUrl}/${cep}/json`);
   }
 }

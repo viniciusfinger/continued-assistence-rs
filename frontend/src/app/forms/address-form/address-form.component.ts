@@ -76,12 +76,12 @@ export class AddressFormComponent implements OnInit {
     }
   }
 
-  consultarCep(): void {
+  consultCep(): void {
     const cep = this.addressForm.get('cep')?.value;
     if (cep) {
       this.loading = true;
       this.addressForm.disable();
-      this.cepService.consultarCep(cep).subscribe({
+      this.cepService.consultCep(cep).subscribe({
         next: data => {
           if (data.logradouro) {
             this.addressForm.patchValue({

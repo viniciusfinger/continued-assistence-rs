@@ -7,9 +7,9 @@
           <label for="cep">CEP</label>
           <div class="input-group mb-3">
             <input type="text" class="form-control" id="cep" placeholder="Digite o CEP" formControlName="cep" name="cep" mask="00000-000" />
-            <button class="btn btn-primary" type="button" id="button-addon1" (click)="consultarCep()" [disabled]="loading">
+            <button class="btn btn-primary" type="button" id="button-addon1" (click)="consultCep()" [disabled]="loading">
               <span *ngIf="loading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-              <span *ngIf="!loading">Consultar</span>
+              <span *ngIf="!loading">Consultar 🔎</span>
             </button>
           </div>
         </div>
