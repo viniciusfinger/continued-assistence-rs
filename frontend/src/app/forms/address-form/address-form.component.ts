@@ -5,6 +5,7 @@ import { Address } from "../../model/address";
 import { HomeZone } from "../../model/enum/home-zone";
 import { CepService } from "../../services/cep.service";
 import { ToastrService } from 'ngx-toastr';
+import { AddressService } from "../../services/address.service";
 
 @Component({
   selector: "app-address-form",
@@ -17,14 +18,14 @@ export class AddressFormComponent implements OnInit {
   address!: Address;
   loading: boolean = false;
 
-  constructor(private fb: FormBuilder, private router: Router, private cepService: CepService, private toastr: ToastrService, private route: ActivatedRoute) {
+  constructor(private fb: FormBuilder, private router: Router, private cepService: CepService, private toastr: ToastrService, private addressService: AddressService, private route: ActivatedRoute) {
     this.addressForm = this.fb.group({
-      street: ["", Validators.required],
-      number: ["", Validators.required],
+      street: [""],
+      number: [""],
       cep: ["", [Validators.required, Validators.pattern(/^\d{5}-\d{3}$/)]],
-      neighbourhood: ["", Validators.required],
-      city: ["", Validators.required],
-      zone: ["", Validators.required],
+      neighbourhood: [""],
+      city: [""],
+      zone: [""],
       observation: [""],
     });
 
@@ -35,6 +36,8 @@ export class AddressFormComponent implements OnInit {
   ngOnInit(): void {
     if (history.state.address){
       this.address = history.state.address;
+    } else {
+      this.address = new Address(null, "", "", "", "", "", HomeZone.URBAN, "", []);
     }
   }
 
@@ -71,9 +74,26 @@ export class AddressFormComponent implements OnInit {
 
   save() {
     if (this.addressForm.valid) {
-      //todo: send to backend
+      this.buildAddress();
+      this.addressService.create(this.address).subscribe({
+        next: () => {
+          this.toastr.success('Endereço cadastrado com sucesso!', 'Sucesso', {
+            progressBar: true,
+            timeOut: 3000
+          });
+          this.router.navigate([""]);
+        },
+        error: (e) => {
+          this.toastr.error('Erro ao cadastrar o endereço.', 'Erro', {
+            progressBar: true,
+            timeOut: 3000
+          });
+
+          console.log(e);
+        }
+      });
     } else {
-      //todo: tratar erro
+      console.log("Formulário inválido");
     }
   }
 
